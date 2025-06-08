@@ -7,7 +7,6 @@
         <groupId>com.example</groupId>
         <artifactId>spring-logging</artifactId>
         <version>1.0.0</version>
-<!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
     <artifactId>logback</artifactId>
