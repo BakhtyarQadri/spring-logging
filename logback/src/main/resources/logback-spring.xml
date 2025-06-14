@@ -1,5 +1,58 @@
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml" />
-<!--    <logger name="root" level="OFF/TRACE/DEBUG" />-->
-    <logger name="com.example.logback" level="TRACE" />
+
+<!--    <include resource="org/springframework/boot/logging/logback/base.xml" />-->
+
+<!--    <logger name="root" level="OFF/TRACE/DEBUG" /> CONFIGURE ROOT LOG LEVEL-->
+<!--    <logger name="com.example.logback" level="TRACE" /> CONFIGURE PACKAGE/CLASS LOG LEVEL-->
+
+    <!--
+        Appender: defines where logs go (Console, File, etc.)
+        Encoder: formats log messages
+        Pattern: defines log format (e.g., %d = timestamp, %msg = message)
+        Root: sets default log level (TRACE, DEBUG)
+        additivity="false"
+     -->
+
+    <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level [%X{user}] --- [%thread] %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="myFileAppender" class="ch.qos.logback.core.FileAppender">
+        <file>logback/src/main/resources/logs/logback-file-appender.log</file>
+        <encoder>
+            <pattern>%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--
+        RollingFileAppender extends FileAppender with the capability to rollover log files
+        RollingPolicy is responsible for the what, while TriggeringPolicy is responsible for the when
+        maxHistory means keep max 10 files at a time, otherwise delete the oldest
+    -->
+    <appender name="myRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logback/src/main/resources/logs/logback-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- write the root+package logs to the console+file -->
+    <root level="INFO">
+        <appender-ref ref="myConsoleAppender" />
+        <appender-ref ref="myFileAppender" />
+    </root>
+
+    <!-- write the package logs to the rolling file -->
+    <logger name="com.example.logback" level="TRACE">
+        <appender-ref ref="myRollingFileAppender" />
+    </logger>
+
+    <!-- todo: need to explore Structured Logging -->
+
 </configuration>
