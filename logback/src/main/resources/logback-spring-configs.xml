@@ -1,5 +1,10 @@
 <configuration>
 
+<!--    <include resource="org/springframework/boot/logging/logback/base.xml" /> Inheriting the base configs -->
+
+<!--    <logger name="root" level="OFF/TRACE/DEBUG" /> Configure root log level -->
+<!--    <logger name="com.example.logback" level="TRACE" /> Configure package log level-->
+
     <!-- Appender: defines where logs go (Console, File, etc.) -->
     <!-- Encoder: formats log messages -->
     <!-- Pattern: controls log format (e.g., %d = timestamp, %msg = message) -->

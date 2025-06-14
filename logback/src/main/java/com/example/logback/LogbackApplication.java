@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class LogbackApplication {
 
-    private static final String LOGGER_NAME = "Logback";
+    private static final String LOGGER_NAME = "'Logback'";
     private static final Logger log = LoggerFactory.getLogger(LogbackApplication.class);
 
     public static void main(String[] args) {
