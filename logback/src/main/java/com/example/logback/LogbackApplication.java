@@ -8,11 +8,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class LogbackApplication {
 
+    private static final String LOGGER_NAME = "Logback";
     private static final Logger log = LoggerFactory.getLogger(LogbackApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(LogbackApplication.class, args);
-        log.info("welcome to the Logback world");
+        log.error("welcome to the {} world", LOGGER_NAME);
+        log.warn("welcome to the {} world", LOGGER_NAME);
+        log.info("welcome to the {} world", LOGGER_NAME);
+        log.debug("welcome to the {} world", LOGGER_NAME);
+        log.trace("welcome to the {} world", LOGGER_NAME);
     }
 
 }
