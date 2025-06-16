@@ -17,6 +17,7 @@ public class LogbackApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LogbackApplication.class, args);
+
         log.error("welcome to the {} world", LOGGER_NAME);
         log.warn("welcome to the {} world", LOGGER_NAME);
         log.info("welcome to the {} world", LOGGER_NAME);

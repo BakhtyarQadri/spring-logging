@@ -1,0 +1,9 @@
+15-06-2025 02:06:22 PM INFO  --- [main] c.example.logback.LogbackApplication : Starting LogbackApplication v1.0.0 using Java 24.0.1 with PID 26400 (E:\Professional\Practice\spring-logging\logback\target\logback-1.0.0.jar started by mbakh in E:\Professional\Practice\spring-logging\logback)
+15-06-2025 02:06:22 PM DEBUG --- [main] c.example.logback.LogbackApplication : Running with Spring Boot v3.5.0, Spring v6.2.7
+15-06-2025 02:06:22 PM INFO  --- [main] c.example.logback.LogbackApplication : No active profile set, falling back to 1 default profile: "default"
+15-06-2025 02:06:24 PM INFO  --- [main] c.example.logback.LogbackApplication : Started LogbackApplication in 3.478 seconds (process running for 4.386)
+15-06-2025 02:06:24 PM ERROR --- [main] c.example.logback.LogbackApplication : welcome to the 'Logback' world
+15-06-2025 02:06:24 PM WARN  --- [main] c.example.logback.LogbackApplication : welcome to the 'Logback' world
+15-06-2025 02:06:24 PM INFO  --- [main] c.example.logback.LogbackApplication : welcome to the 'Logback' world
+15-06-2025 02:06:24 PM DEBUG --- [main] c.example.logback.LogbackApplication : welcome to the 'Logback' world
+15-06-2025 02:06:24 PM TRACE --- [main] c.example.logback.LogbackApplication : welcome to the 'Logback' world
