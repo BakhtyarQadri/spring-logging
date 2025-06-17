@@ -18,6 +18,10 @@
     <dependencies>
 
         <!-- starter-web / starter / starter-logging / logback-classic / logback-core (provides the actual Logback implementation) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
     </dependencies>
 
