@@ -1,7 +1,6 @@
-.mvn
+
 .gitattributes
-mvnw
-mvnw.cmd
+src/main/resources/logs
 
 HELP.md
 target/
