@@ -29,6 +29,8 @@ public class LogbackApplication {
     public void greeting() {
         MDC.put("user", "Bakhtyar");
         log.info("bye bye");
+
+        MDC.clear(); // clear MDC context after use
     }
 
 }

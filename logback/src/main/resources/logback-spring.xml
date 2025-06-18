@@ -10,19 +10,31 @@
         Encoder: formats log messages
         Pattern: defines log format (e.g., %d = timestamp, %msg = message)
         Root: sets default log level (TRACE, DEBUG)
-        additivity="false"
      -->
 
-    <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+
+
+    <!-- Option 1: Pull from Spring (application.properties) -->
+<!--    <springProperty name="CONSOLE_PATTERN" source="logging.pattern.console" defaultValue="%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level [%X{user}] &#45;&#45; [%thread] %logger{36} : %msg%n" />-->
+
+    <!-- Option 2: Hardcoded property -->
+    <property name="CONSOLE_PATTERN" value="%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level [%X{user}] --- [%thread] %logger{36} : %msg%n" />
+    <property name="FILE_PATH" value="logback/src/main/resources/logs/logback-file-appender.log" />
+    <property name="FILE_PATTERN" value="%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n" />
+    <property name="ROLLING_FILE_PATH" value="logback/src/main/resources/logs/logback-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}.%i.log" />
+    <property name="ROLLING_FILE_PATTERN" value="%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n" />
+
+
+    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level [%X{user}] --- [%thread] %logger{36} : %msg%n</pattern>
+            <pattern>${CONSOLE_PATTERN}</pattern>
         </encoder>
     </appender>
 
-    <appender name="myFileAppender" class="ch.qos.logback.core.FileAppender">
-        <file>logback/src/main/resources/logs/logback-file-appender.log</file>
+    <appender name="FileAppender" class="ch.qos.logback.core.FileAppender">
+        <file>${FILE_PATH}</file>
         <encoder>
-            <pattern>%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</pattern>
+            <pattern>${FILE_PATTERN}</pattern>
         </encoder>
     </appender>
 
@@ -31,26 +43,33 @@
         RollingPolicy is responsible for the what, while TriggeringPolicy is responsible for the when
         maxHistory means keep max 10 files at a time, otherwise delete the oldest
     -->
-    <appender name="myRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="RollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>logback/src/main/resources/logs/logback-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}.%i.log</fileNamePattern>
+            <fileNamePattern>${ROLLING_FILE_PATH}</fileNamePattern>
             <maxFileSize>10MB</maxFileSize>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</pattern>
+            <pattern>${ROLLING_FILE_PATTERN}</pattern>
         </encoder>
     </appender>
 
-    <!-- write the root+package logs to the console+file -->
+    <!-- console + file -->
     <root level="INFO">
-        <appender-ref ref="myConsoleAppender" />
-        <appender-ref ref="myFileAppender" />
+        <appender-ref ref="ConsoleAppender" />
+        <appender-ref ref="FileAppender" />
     </root>
 
-    <!-- write the package logs to the rolling file -->
-    <logger name="com.example.logback" level="TRACE">
-        <appender-ref ref="myRollingFileAppender" />
+    <!--
+        IF additivity="false", rollingFile ELSE console + file + rollingFile
+        Logback’s Logger inherit appenders from their parent (the <root> logger) unless additivity="false" is set
+        additivity="false" prevents inheriting appenders from <root> (will remove logs duplication incase of duplicate appenders)
+        additivity="true" + unique appender = inherit appenders from <root>, unique logs
+        additivity="true" + duplicate appender = logs duplication
+    -->
+    <logger name="com.example.logback" level="TRACE" additivity="true">
+        <appender-ref ref="ConsoleAppender" />
+        <appender-ref ref="RollingFileAppender" />
     </logger>
 
     <!-- todo: need to explore Structured Logging -->
