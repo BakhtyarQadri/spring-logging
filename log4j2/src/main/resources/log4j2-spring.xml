@@ -1,0 +1,54 @@
+<Configuration>
+
+    <Properties>
+        <!--  %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n  -->
+        <Property name="CONSOLE_PATTERN">%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level [%X{user}] --- [%thread] %logger{36} : %msg%n</Property>
+        <Property name="FILE_PATH">log4j2/src/main/resources/logs/log4j2-file-appender.log</Property>
+        <Property name="FILE_PATTERN">%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
+        <Property name="ROLLING_FILE_PATH">log4j2/src/main/resources/logs/log4j2-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}.log</Property>
+        <Property name="ROLLING_ARCHIVE_FILE_PATH">log4j2/src/main/resources/logs/log4j2-rolling-archive-file-appender-%d{dd-MM-yyyy}.log.gz</Property>
+        <Property name="ROLLING_FILE_PATTERN">%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${CONSOLE_PATTERN}"/>
+        </Console>
+
+<!--        <Async name="AsyncConsoleAppender">-->
+<!--            <Console name="Console" target="SYSTEM_OUT">-->
+<!--                <PatternLayout pattern="${CONSOLE_PATTERN}" />-->
+<!--            </Console>-->
+<!--        </Async>-->
+
+        <File name="FileAppender" fileName="${FILE_PATH}">
+            <PatternLayout pattern="${FILE_PATTERN}" />
+        </File>
+
+        <RollingFile name="RollingFileAppender"
+                     fileName="${ROLLING_FILE_PATH}"
+                     filePattern="${ROLLING_ARCHIVE_FILE_PATH}">
+            <PatternLayout pattern="${ROLLING_FILE_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Root level="INFO">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="FileAppender"/>
+        </Root>
+
+        <Logger name="com.example.log4j2" level="TRACE">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="RollingFileAppender"/>
+        </Logger>
+
+    </Loggers>
+
+</Configuration>
