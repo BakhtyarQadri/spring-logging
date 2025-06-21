@@ -1,1 +1,3 @@
-initial commit
+## Child Modules
+* logback
+* log4j2
