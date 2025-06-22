@@ -39,18 +39,7 @@
 
     <properties>
         <java.version>21</java.version>
-        <spring.boot.version>3.5.3</spring.boot.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter-web</artifactId>-->
-<!--                <version>${spring.boot.version}</version>-->
-<!--            </dependency>-->
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
