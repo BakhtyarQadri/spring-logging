@@ -18,10 +18,12 @@
 <!--    <springProperty name="CONSOLE_PATTERN" source="logging.pattern.console" defaultValue="%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level [%X{user}] &#45;&#45; [%thread] %logger{36} : %msg%n" />-->
 
     <!-- Option 2: Hardcoded property -->
+    <property name="BASE_PATH" value="logback/src/main/resources/logs" />
     <property name="CONSOLE_PATTERN" value="%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level [%X{user}] --- [%thread] %logger{36} : %msg%n" />
-    <property name="FILE_PATH" value="logback/src/main/resources/logs/logback-file-appender.log" />
+<!--    <property name="FILE_PATH" value="logback/src/main/resources/logs/logback-file-appender.log" />-->
+    <property name="FILE_PATH" value="${BASE_PATH}/logback-file-appender.log" />
     <property name="FILE_PATTERN" value="%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n" />
-    <property name="ROLLING_FILE_PATH" value="logback/src/main/resources/logs/logback-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}.%i.log" />
+    <property name="ROLLING_FILE_PATH" value="${BASE_PATH}/logback-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}.%i.log" />
     <property name="ROLLING_FILE_PATTERN" value="%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n" />
 
 
@@ -67,7 +69,7 @@
         additivity="true" + unique appender = inherit appenders from <root>, unique logs
         additivity="true" + duplicate appender = logs duplication
     -->
-    <logger name="com.example.logback" level="TRACE" additivity="true">
+    <logger name="com.example.logback" level="TRACE" additivity="false">
         <appender-ref ref="ConsoleAppender" />
         <appender-ref ref="RollingFileAppender" />
     </logger>
