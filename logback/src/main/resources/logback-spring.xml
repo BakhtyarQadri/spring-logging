@@ -20,7 +20,6 @@
     <!-- Option 2: Hardcoded property -->
     <property name="BASE_PATH" value="logback/src/main/resources/logs" />
     <property name="CONSOLE_PATTERN" value="%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level [%X{user}] --- [%thread] %logger{36} : %msg%n" />
-<!--    <property name="FILE_PATH" value="logback/src/main/resources/logs/logback-file-appender.log" />-->
     <property name="FILE_PATH" value="${BASE_PATH}/logback-file-appender.log" />
     <property name="FILE_PATTERN" value="%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n" />
     <property name="ROLLING_FILE_PATH" value="${BASE_PATH}/logback-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}.%i.log" />

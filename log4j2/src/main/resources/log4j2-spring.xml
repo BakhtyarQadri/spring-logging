@@ -6,9 +6,9 @@
         <Property name="CONSOLE_PATTERN">%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level [%X{user}] --- [%thread] %logger{36} : %msg%n</Property>
         <Property name="FILE_PATH">${BASE_PATH}/log4j2-file-appender.log</Property>
         <Property name="FILE_PATTERN">%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
-        <Property name="ROLLING_FILE_PATH">${BASE_PATH}/log4j2-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}.log</Property>
+        <Property name="ROLLING_FILE_PATH">${BASE_PATH}/log4j2-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}.%i.log</Property>
         <Property name="ROLLING_FILE_PATTERN">%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
-        <Property name="ROLLING_ARCHIVE_FILE_PATH">${BASE_PATH}/log4j2-rolling-archive-file-appender-%d{dd-MM-yyyy}.log.gz</Property>
+        <Property name="ROLLING_ARCHIVE_FILE_PATH">${BASE_PATH}/archive/log4j2-rolling-archive-file-appender-%d{dd-MM-yyyy}.log.gz</Property>
     </Properties>
 
     <Appenders>
