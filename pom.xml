@@ -21,6 +21,7 @@
         <module>logback</module>
         <module>log4j2</module>
         <module>log4j2-intercept-wrapper</module>
+        <module>log4j2-intercept-wrapper-testing</module>
     </modules>
 
     <url/>
@@ -42,12 +43,47 @@
     </properties>
 
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <!-- Enable resource filtering -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
     </build>
+
+    <profiles>
+
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <mvn.profile.name>local</mvn.profile.name>
+                <log.base.path>/tmp</log.base.path>
+                <spring.profiles.active>local</spring.profiles.active>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>dev</id>
+            <properties>
+                <mvn.profile.name>dev</mvn.profile.name>
+                <log.base.path>/var/log</log.base.path>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+        </profile>
+
+    </profiles>
 
 </project>
