@@ -9,10 +9,10 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>log4j2-intercept-wrapper</artifactId>
+    <artifactId>log4j2-masking-interceptor</artifactId>
     <version>1.0.0</version>
-    <name>log4j2-intercept-wrapper</name>
-    <description>log4j2-intercept-wrapper</description>
+    <name>log4j2-masking-interceptor</name>
+    <description>log4j2-masking-interceptor</description>
 
     <properties>
         <java.version>21</java.version>
@@ -22,7 +22,7 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -38,5 +38,14 @@
         </dependency>
 
     </dependencies>
+
+<!--    <build>-->
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <filtering>true</filtering>-->
+<!--            </resource>-->
+<!--        </resources>-->
+<!--    </build>-->
 
 </project>

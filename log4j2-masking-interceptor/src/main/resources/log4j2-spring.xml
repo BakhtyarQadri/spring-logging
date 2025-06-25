@@ -1,13 +1,14 @@
 <Configuration>
 
 <Properties>
-    <Property name="BASE_PATH">log4j2-intercept-wrapper/src/main/resources/logs</Property>
+    <Property name="BASE_PATH">log4j2-masking-interceptor/src/main/resources/logs</Property>
+<!--    <Property name="BASE_PATH">${spring:log.base.path}</Property>-->
     <Property name="CONSOLE_PATTERN">%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
-    <Property name="FILE_PATH">${BASE_PATH}/file-appender.log</Property>
+    <Property name="FILE_PATH">${BASE_PATH}/${spring:spring.application.name}-file-appender.log</Property>
     <Property name="FILE_PATTERN">%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
-    <Property name="ROLLING_FILE_PATH">${BASE_PATH}/rolling-file-appender-%d{dd-MM-yyyy_hh-mm}-%i.log</Property>
+    <Property name="ROLLING_FILE_PATH">${BASE_PATH}/${spring:spring.application.name}-rolling-file-appender-%d{dd-MM-yyyy_hh-mm}-%i.log</Property>
     <Property name="ROLLING_FILE_PATTERN">%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
-    <Property name="ROLLING_ARCHIVE_FILE_PATH">${BASE_PATH}/archive/rolling-archive-file-appender-%d{dd-MM-yyyy}-%i.log.gz</Property>
+    <Property name="ROLLING_ARCHIVE_FILE_PATH">${BASE_PATH}/archive/${spring:spring.application.name}-rolling-archive-file-appender-%d{dd-MM-yyyy}-%i.log.gz</Property>
 </Properties>
 
 <Appenders>
@@ -22,7 +23,8 @@
 
     <RollingFile name="RollingFileAppender"
                  fileName="${ROLLING_FILE_PATH}"
-                 filePattern="${ROLLING_ARCHIVE_FILE_PATH}">
+                 filePattern="${ROLLING_ARCHIVE_FILE_PATH}"
+                 append="true">
         <PatternLayout pattern="${ROLLING_FILE_PATTERN}"/>
         <Policies>
             <TimeBasedTriggeringPolicy interval="1"/>
@@ -44,10 +46,7 @@
         <AppenderRef ref="RewriteAppender"/>
     </Root>
 
-<!--    <Logger name="com.example.log4j2-intercepter-wrapper" level="TRACE">-->
-<!--        <AppenderRef ref="ConsoleAppender"/>-->
-<!--        <AppenderRef ref="RollingFileAppender"/>-->
-<!--    </Logger>-->
+    <Logger name="com.example.log4j2-masking-interceptor" level="TRACE" />
 
 </Loggers>
 

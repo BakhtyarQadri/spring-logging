@@ -1,4 +1,4 @@
-package com.example.log4j2interceptwrapper.config;
+package com.example.log4j2maskinginterceptor;
 
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.impl.MutableLogEvent;

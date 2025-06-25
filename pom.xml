@@ -20,7 +20,7 @@
     <modules>
         <module>logback</module>
         <module>log4j2</module>
-        <module>log4j2-intercept-wrapper</module>
+        <module>log4j2-masking-interceptor</module>
         <module>log4j2-intercept-wrapper-testing</module>
     </modules>
 
