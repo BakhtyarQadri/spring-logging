@@ -29,8 +29,12 @@ public class Main {
         String phone5 = "+201001234567";
         String phone6 = "+2010012345678"; // will not masked
 
+        log.error("error msg");
+        log.warn("warn msg");
         log.info("email1: {}, email2: {}, email3: {}, email4: {}, email5: " + email5, email1, email2, email3, email4);
         log.info("phone1: {}, phone2: {}, phone3: {}, phone4: {}, phone5: {}, phone6: " + phone6, phone1, phone2, phone3, phone4, phone5);
+        log.debug("debug msg");
+        log.trace("trace msg");
     }
 
 }
