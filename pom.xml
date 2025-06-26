@@ -21,7 +21,7 @@
         <module>logback</module>
         <module>log4j2</module>
         <module>log4j2-masking-interceptor</module>
-        <module>log4j2-intercept-wrapper-testing</module>
+        <module>log4j2-masking-interceptor-consumer</module>
     </modules>
 
     <url/>

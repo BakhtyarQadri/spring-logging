@@ -48,7 +48,7 @@
         <AppenderRef ref="RewriteAppender"/>
     </Root>
 
-    <Logger name="com.example.log4j2maskinginterceptor" level="TRACE" />
+    <Logger name="com.example" level="TRACE" />
 
 </Loggers>
 
