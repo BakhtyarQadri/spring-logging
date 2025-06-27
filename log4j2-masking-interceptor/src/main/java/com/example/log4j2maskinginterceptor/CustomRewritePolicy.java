@@ -16,7 +16,7 @@ public class CustomRewritePolicy implements RewritePolicy {
 
     @Override
     public LogEvent rewrite(LogEvent source) {
-        if (!source.getLoggerName().startsWith("com.example")) { // can exclude irrelevant thread logs -> source.getThreadName().equals("main")
+        if (!source.getLoggerName().startsWith("com.example")) { // can exclude irrelevant logs based on thread, package, keywords in log
             return source;
         }
         Message logMsg = source.getMessage();
