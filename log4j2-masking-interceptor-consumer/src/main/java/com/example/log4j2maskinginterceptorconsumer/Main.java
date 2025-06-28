@@ -18,18 +18,24 @@ public class Main {
         String email3 = "joh@intigral.net";
         String email4 = "johndoe@gmail.com";
         String email5 = "john.doe@xyz.co.sa";
+        String text1 = "org.postgresql.jdbc.PgConnection@6793f752"; // shouldn't be masked
+        String text2 = "nmu@EP4"; // shouldn't be masked
+        String text3 = "nicas47615@finfave.com";
 
-        String phone1 = "961312345"; // will not masked
+        String phone1 = "961312345"; // shouldn't be masked
         String phone2 = "9613123456";
         String phone3 = "+9613123456";
-        String phone4 = "201001234567";
-        String phone5 = "+201001234567";
-        String phone6 = "+2010012345678"; // will not masked
+        String phone4 = "966831044093694";
+        String phone5 = "+966831044093694";
+        String phone6 = "9668310440936945"; // shouldn't be masked
+
+        String landline = "148406656";
 
         log.error("error msg");
         log.warn("warn msg");
-        log.info("email1: {}, email2: {}, email3: {}, email4: {}, email5: " + email5, email1, email2, email3, email4);
+        log.info("email1: {}, email2: {}, email3: {}, email4: {}, email5: {}, text1: {}, text2: {}, text3: {}", email1, email2, email3, email4, email5, text1, text2, text3);
         log.info("phone1: {}, phone2: {}, phone3: {}, phone4: {}, phone5: {}, phone6: " + phone6, phone1, phone2, phone3, phone4, phone5);
+        log.info("landline: {}", landline);
         log.debug("debug msg");
         log.trace("trace msg");
     }
