@@ -1,9 +1,9 @@
 <Configuration>
 
 <Properties>
-    <Property name="MODULE_NAME">${spring:spring.application.name}</Property>
-    <Property name="BASE_PATH">${MODULE_NAME}/src/main/resources/logs</Property>
-<!--    <Property name="BASE_PATH">${spring:log.base.path}</Property>-->
+    <Property name="LOG_DIR_PATH">@log.dir.path@</Property> <!-- from pom.xml -->
+    <Property name="MODULE_NAME">${spring:spring.application.name}</Property> <!-- from application.properties -->
+    <Property name="BASE_PATH">${MODULE_NAME}/${LOG_DIR_PATH}</Property>
     <Property name="CONSOLE_PATTERN">%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
     <Property name="FILE_PATH">${BASE_PATH}/${MODULE_NAME}-file-appender.log</Property>
     <Property name="FILE_PATTERN">%d{dd-MM-yyyy hh:mm:ss a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
