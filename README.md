@@ -26,5 +26,10 @@ A library through which all the log statements should go through and the library
 
 ### Note:-
 - To use this module as library
-  - Incase of decentralized configs, remove Main.java + log4j2-spring.xml + unnecessary dependencies from the pom.xml (just include "log4j-core" with "provided" scope)
-  - Incase of centralized configs, .....
+  - Incase of decentralized/module specific "log4j2-spring.xml"
+    - optional - remove Main.java
+    - optional - remove log4j2-spring.xml
+    - remove unnecessary dependencies OR set their scope to "provided"
+  - Incase of centralized "log4j2-spring.xml" / "log4j2.xml"
+    - library module dependencies scope should be "provided", if the consuming module will provide the required dependencies
+    - consuming module should define the properties that is dynamically injected at runtime in the library module "log4j2-spring.xml"
