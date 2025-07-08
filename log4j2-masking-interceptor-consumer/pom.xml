@@ -14,6 +14,12 @@
     <name>log4j2-masking-interceptor-consumer</name>
     <description>log4j2-masking-interceptor-consumer</description>
 
+    <properties>
+        <java.version>21</java.version>
+        <log4j2.version>2.24.3</log4j2.version>
+        <log.dir.path>src/main/resources/logs</log.dir.path>
+    </properties>
+
     <dependencies>
 
         <dependency>
@@ -33,15 +39,12 @@
             <version>1.0.0</version>
         </dependency>
 
-    </dependencies>
+        <!-- starter-log4j2 / log4j-core / log4j-api -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
 
-<!--    <build>-->
-<!--        <resources>-->
-<!--            <resource>-->
-<!--                <directory>src/main/resources</directory>-->
-<!--                <filtering>true</filtering>-->
-<!--            </resource>-->
-<!--        </resources>-->
-<!--    </build>-->
+    </dependencies>
 
 </project>
