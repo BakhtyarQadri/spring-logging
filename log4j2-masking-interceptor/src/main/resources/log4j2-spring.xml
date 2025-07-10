@@ -1,7 +1,7 @@
 <Configuration>
 
 <Properties>
-    <Property name="LOG_DIR_PATH">@log.dir.path@</Property> <!-- from pom.xml -->
+    <Property name="LOG_DIR_PATH">@log.dir.path@</Property> <!-- from pom.xml properties -->
     <Property name="MODULE_NAME">${spring:spring.application.name}</Property> <!-- from application.properties -->
     <Property name="BASE_PATH">${MODULE_NAME}/${LOG_DIR_PATH}</Property>
     <Property name="CONSOLE_PATTERN">%d{dd-MM-yyyy hh:mm:ss.SSS a} %-5level --- [%thread] %logger{36} : %msg%n</Property>
